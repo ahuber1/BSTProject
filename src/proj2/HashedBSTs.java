@@ -42,12 +42,12 @@ public class HashedBSTs<E>
         try
         {
             Scanner scan = new Scanner(file);
-            scan.useDelimiter("\\W|[0-9]");
+            scan.useDelimiter("[^\\w']|[0-9]");
 
             while (scan.hasNext())
             {
                 str = scan.next();
-                System.out.print(str + "\t");
+                System.out.print(str + " ");
             }
         }
         catch(FileNotFoundException e)
