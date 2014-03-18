@@ -8,39 +8,30 @@ package proj2;
  */
 public class BinaryNode<E>
 {
-    private String word;
+    private E element;
+    private BinaryNode<E> left;
+    private BinaryNode<E> right;
     private int frequency;
 
-    public BinaryNode(String word) {
-        super();
-        this.word = word;
-        this.frequency = 1;
+    public BinaryNode(E element)
+    {
+        this(element, null, null);
     }
 
-    public String getWord() { return word; }
-    public void setWord(String word) { this.word = word; }
-    public int getFrequency() { return frequency; }
-    public void setFrequency(int frequency) { this.frequency = frequency; }
-    public void incrementFrequency() { this.frequency++; }
-
-    @Override
-    public String toString() {
-        return "Node [word=" + word + ", frequency=" + frequency + "]";
+    public BinaryNode(E element, BinaryNode<E> left, BinaryNode<E> right)
+    {
+        this.element = element;
+        this.left = left;
+        this.right = right;
     }
 
-    @Override
-    /** This function ONLY worries about matching the STRING portion of this node
-     *
-     */
-    public int compareTo(Object x) {
-
-        Node that = (Node) x;
-        return this.getWord().compareTo(that.getWord());
+    public E getElement()
+    {
+        return element;
     }
 
-    public boolean startsWith(Object x) {
-
-        Node that = (Node) x;
-        return that.getWord().startsWith(this.getWord());
+    public void setElement(E element)
+    {
+        this.element = element;
     }
 }
