@@ -38,6 +38,7 @@ public class HashedBSTs<E extends Comparable<? super E>>
     {
         File file = new File(filename);
         String str;
+        int index;
         char letter;
 
         try
@@ -51,116 +52,19 @@ public class HashedBSTs<E extends Comparable<? super E>>
 
                 if(str.length() > 0)
                 {
-                    letter = str.charAt(0);
-                    switch(letter)
+                    //Checking strings by comparing their Unicode values to their alphabetical index.
+                    //Also known as magic.
+                    if(str.charAt(0) - 65 >= 0 && str.charAt(0) - 65 <= 25)
                     {
-                        case 'A':
-                        case 'a':
-                            table.get(0).insert((E)str);
-                            break;
-                        case 'B':
-                        case 'b':
-                            table.get(1).insert((E)str);
-                            break;
-                        case 'C':
-                        case 'c':
-                            table.get(2).insert((E)str);
-                            break;
-                        case 'D':
-                        case 'd':
-                            table.get(3).insert((E)str);
-                            break;
-                        case 'E':
-                        case 'e':
-                            table.get(4).insert((E)str);
-                            break;
-                        case 'F':
-                        case 'f':
-                            table.get(5).insert((E)str);
-                            break;
-                        case 'G':
-                        case 'g':
-                            table.get(6).insert((E)str);
-                            break;
-                        case 'H':
-                        case 'h':
-                            table.get(7).insert((E)str);
-                            break;
-                        case 'I':
-                        case 'i':
-                            table.get(8).insert((E)str);
-                            break;
-                        case 'J':
-                        case 'j':
-                            table.get(9).insert((E)str);
-                            break;
-                        case 'K':
-                        case 'k':
-                            table.get(10).insert((E)str);
-                            break;
-                        case 'L':
-                        case 'l':
-                            table.get(11).insert((E)str);
-                            break;
-                        case 'M':
-                        case 'm':
-                            table.get(12).insert((E)str);
-                            break;
-                        case 'N':
-                        case 'n':
-                            table.get(13).insert((E)str);
-                            break;
-                        case 'O':
-                        case 'o':
-                            table.get(14).insert((E)str);
-                            break;
-                        case 'P':
-                        case 'p':
-                            table.get(15).insert((E)str);
-                            break;
-                        case 'Q':
-                        case 'q':
-                            table.get(16).insert((E)str);
-                            break;
-                        case 'R':
-                        case 'r':
-                            table.get(17).insert((E)str);
-                            break;
-                        case 'S':
-                        case 's':
-                            table.get(18).insert((E)str);
-                            break;
-                        case 'T':
-                        case 't':
-                            table.get(19).insert((E)str);
-                            break;
-                        case 'U':
-                        case 'u':
-                            table.get(20).insert((E)str);
-                            break;
-                        case 'V':
-                        case 'v':
-                            table.get(21).insert((E)str);
-                            break;
-                        case 'W':
-                        case 'w':
-                            table.get(22).insert((E)str);
-                            break;
-                        case 'X':
-                        case 'x':
-                            table.get(23).insert((E)str);
-                            break;
-                        case 'Y':
-                        case 'y':
-                            table.get(24).insert((E)str);
-                            break;
-                        case 'Z':
-                        case 'z':
-                            table.get(25).insert((E)str);
-                            break;
+                        index = str.charAt(0) - 65;
+                        table.get(index).insert((E)str);
+                    }
+                    if(str.charAt(0) - 97 >= 0 && str.charAt(0) - 97 <= 25)
+                    {
+                        index = str.charAt(0) - 97;
+                        table.get(index).insert((E)str);
                     }
                 }
-                //System.out.print(str + " ");
             }
         }
         catch(FileNotFoundException e)
