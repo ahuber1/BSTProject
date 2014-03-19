@@ -39,7 +39,6 @@ public class HashedBSTs<E extends Comparable<? super E>>
         File file = new File(filename);
         String str;
         int index;
-        char letter;
 
         try
         {
