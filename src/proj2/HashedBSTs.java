@@ -13,15 +13,15 @@ import java.util.Scanner;
  */
 public class HashedBSTs<E extends Comparable<? super E>>
 {
-    private ArrayList<BinarySearchTree<E>> table;
+    private ArrayList<BinarySearchTree<Node>> table;
 
     public HashedBSTs(int size)
     {
-        table = new ArrayList<BinarySearchTree<E>>(size);
+        table = new ArrayList<BinarySearchTree<Node>>(size);
 
         for(int i = 0; i < size; i++)
         {
-            BinarySearchTree<E> tree = new BinarySearchTree<E>();
+            BinarySearchTree<Node> tree = new BinarySearchTree<Node>();
             table.add(i, tree);
         }
     }
@@ -30,7 +30,7 @@ public class HashedBSTs<E extends Comparable<? super E>>
     {
         for (int i = 0; i < table.size(); i++)
         {
-            table.get(i).printTree();
+            System.out.println("This tree starts with: " + table.get(i).getRoot() + " and has " + table.get(i).getCount() + " nodes.");
         }
     }
 
@@ -43,11 +43,11 @@ public class HashedBSTs<E extends Comparable<? super E>>
         try
         {
             Scanner scan = new Scanner(file);
-            scan.useDelimiter("[\\W]|[0-9]");
-
             while (scan.hasNext())
             {
                 str = scan.next();
+                str = str.replaceAll("[\\W]|[0-9]", "");
+                Node newNode = new Node(str);
 
                 if(str.length() > 0)
                 {
@@ -56,12 +56,12 @@ public class HashedBSTs<E extends Comparable<? super E>>
                     if(str.charAt(0) - 65 >= 0 && str.charAt(0) - 65 <= 25)
                     {
                         index = str.charAt(0) - 65;
-                        table.get(index).insert((E)str);
+                        table.get(index).insert(newNode);
                     }
                     if(str.charAt(0) - 97 >= 0 && str.charAt(0) - 97 <= 25)
                     {
                         index = str.charAt(0) - 97;
-                        table.get(index).insert((E)str);
+                        table.get(index).insert(newNode);
                     }
                 }
             }

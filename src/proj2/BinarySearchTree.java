@@ -9,16 +9,18 @@ package proj2;
 public class BinarySearchTree<E extends Comparable<? super E>>
 {
     private BinaryNode<E> root;
+    private int count;
 
     public BinarySearchTree()
     {
         root = null;
+        count = 0;
     }
 
-    public  BinarySearchTree(String str)
+    /*public  BinarySearchTree(String str)
     {
         root = new BinaryNode(str);
-    }
+    }*/
 
     public void emptyTree()
     {
@@ -39,6 +41,7 @@ public class BinarySearchTree<E extends Comparable<? super E>>
     {
         if (t == null)
         {
+            count++;
             return new BinaryNode<E>(x, null, null);
         }
 
@@ -86,12 +89,16 @@ public class BinarySearchTree<E extends Comparable<? super E>>
 
     private void printRoot(BinaryNode t)
     {
-
+        System.out.print(t.getElement());
     }
 
     public E getRoot()
     {
-        return root.getElement();
+    }
+
+    public int getCount()
+    {
+        return count;
     }
 
     public void findCommonAncestor(E x, E y)
@@ -104,7 +111,6 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         private E element;
         private BinaryNode<E> left;
         private BinaryNode<E> right;
-        private int frequency;
 
         public BinaryNode(E element)
         {
