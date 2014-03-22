@@ -17,11 +17,6 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         count = 0;
     }
 
-    public void emptyTree()
-    {
-        root = null;
-    }
-
     public boolean isEmpty()
     {
         return root == null;
@@ -59,11 +54,6 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         return t;
     }
 
-    public void printRoot()
-    {
-        root.getElement();
-    }
-
     public void printTree()
     {
         if (isEmpty())
@@ -86,11 +76,6 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         }
     }
 
-    private void printRoot(BinaryNode<E> t)
-    {
-        System.out.print(t.getElement());
-    }
-
     public E getRoot()
     {
         return root.getElement();
@@ -103,7 +88,7 @@ public class BinarySearchTree<E extends Comparable<? super E>>
 
     public void findCommonAncestor(E x, E y)
     {
-        System.out.println("The common ancestor of \n" + x + " and " + y + "\n\tis: " + findCommonAncestor(root, x, y).getElement());
+        System.out.println("The common ancestor of \n" + find(x) + " and " + find(y) + "\n\tis: " + findCommonAncestor(root, x, y).getElement());
     }
 
     private BinaryNode<E> findCommonAncestor(BinaryNode<E> t, E x, E y)
@@ -123,6 +108,31 @@ public class BinarySearchTree<E extends Comparable<? super E>>
         else
         {
             return t;
+        }
+    }
+
+    public E find (E x)
+    {
+        return find(root, x);
+    }
+
+    private E find(BinaryNode<E> t, E x)
+    {
+        if (t == null)
+        {
+            return null;
+        }
+        if(t.getElement().compareTo(x) > 0)
+        {
+            return find(t.left, x);
+        }
+        else if(t.getElement().compareTo(x) < 0)
+        {
+            return find(t.right, x);
+        }
+        else
+        {
+            return t.getElement();
         }
     }
 
