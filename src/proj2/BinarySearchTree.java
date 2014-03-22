@@ -143,21 +143,29 @@ public class BinarySearchTree<E extends Comparable<? super E>>
 
     private void findAll(BinaryNode<E> t, E x)
     {
-        if (t.getElement() == null)
+        if (t == null)
         {
-            System.out.print("");
+            System.out.println("NULL");
         }
         else if (((Node)t.getElement()).startsWith(x))
         {
             System.out.println(t.getElement());
+            if(t.right != null)
+            {
+                findAll(t.right, x);
+            }
         }
-        if (t.getElement().compareTo(x) > 0)
+        else
         {
-            findAll(t.left, x);
-        }
-        else if (t.getElement().compareTo(x) < 0)
-        {
-            findAll(t.right, x);
+            System.out.println("HERE: " + t.getElement());
+            if (t.getElement().compareTo(x) > 0)
+            {
+                findAll(t.left, x);
+            }
+            else if (t.getElement().compareTo(x) < 0)
+            {
+                findAll(t.right, x);
+            }
         }
     }
 
