@@ -84,6 +84,7 @@ public class HashedBSTs<E extends Comparable<? super E>>
 
     public void findAll(BinarySearchTree<Node> retrieved, Node sample)
     {
-
+        System.out.println("Printing the results of nodes that START WITH: " + sample.getWord());
+        retrieved.findAll(sample);
     }
 }
