@@ -30,8 +30,20 @@ public class HashedBSTs<E extends Comparable<? super E>>
     {
         for (int i = 0; i < table.size(); i++)
         {
-            System.out.println("This tree starts with: " + table.get(i).getRoot() + " and has " + table.get(i).getCount() + " nodes.");
+            if(table.get(i).isEmpty())
+            {
+                System.out.println("Empty Tree");
+            }
+            else
+            {
+                System.out.println("This tree starts with: " + table.get(i).getRoot() + " and has " + table.get(i).getCount() + " nodes.");
+            }
         }
+    }
+
+    public BinarySearchTree retrieveHashedBSTat(int index)
+    {
+        return table.get(index);
     }
 
     public void fileReader(String filename)
@@ -47,21 +59,19 @@ public class HashedBSTs<E extends Comparable<? super E>>
             {
                 str = scan.next();
                 str = str.replaceAll("[\\W]|[0-9]", "");
-                Node newNode = new Node(str);
 
                 if(str.length() > 0)
                 {
                     //Checking strings by comparing their Unicode values to their alphabetical index.
-                    //Also known as magic.
                     if(str.charAt(0) - 65 >= 0 && str.charAt(0) - 65 <= 25)
                     {
                         index = str.charAt(0) - 65;
-                        table.get(index).insert(newNode);
+                        table.get(index).insert(new Node(str));
                     }
                     if(str.charAt(0) - 97 >= 0 && str.charAt(0) - 97 <= 25)
                     {
                         index = str.charAt(0) - 97;
-                        table.get(index).insert(newNode);
+                        table.get(index).insert(new Node(str));
                     }
                 }
             }
