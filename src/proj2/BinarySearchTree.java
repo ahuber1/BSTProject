@@ -145,19 +145,23 @@ public class BinarySearchTree<E extends Comparable<? super E>>
     {
         if (t == null)
         {
-            System.out.println("NULL");
+            //System.out.println("NULL");
         }
-        else if (((Node)t.getElement()).startsWith(x))
+        else if (startsWith(t, x))
         {
             System.out.println(t.getElement());
             if(t.right != null)
             {
                 findAll(t.right, x);
             }
+            if(t.left != null)
+            {
+                findAll(t.left, x);
+            }
         }
         else
         {
-            System.out.println("HERE: " + t.getElement());
+            //System.out.println("HERE: " + t.getElement());
             if (t.getElement().compareTo(x) > 0)
             {
                 findAll(t.left, x);
@@ -166,6 +170,33 @@ public class BinarySearchTree<E extends Comparable<? super E>>
             {
                 findAll(t.right, x);
             }
+        }
+    }
+
+    private boolean startsWith(BinaryNode<E> t, E x)
+    {
+        String localStr = ((Node)t.getElement()).getWord();
+        String inputStr = ((Node)x).getWord();
+        int result = 0;
+
+        for(int i = 0; i < inputStr.length(); i++)
+        {
+            if (localStr.charAt(i) == inputStr.charAt(i))
+            {
+                result++;
+            }
+            else
+            {
+                result -= (inputStr.length() + 10);
+            }
+        }
+        if(result > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 
