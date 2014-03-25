@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * @author theghv
+ * Stores and manipulates an ArrayList of Binary Search Trees. The BSTs store Nodes containing words taken from an input
+ * file as well as their frequencies.
+ *
+ * @author Mark Judy <mjudy1@umbc.edu>
  * @version 1.0
  *          Date: 3/15/14
  *          Time: 5:44 PM
@@ -15,6 +18,10 @@ public class HashedBSTs<E extends Comparable<? super E>>
 {
     private ArrayList<BinarySearchTree<Node>> table;
 
+    /**
+     * Constructor for HashedBSTs class. Initializes an ArrayList of Binary Search Trees with length specified by size parameter.
+     * @param size Sets the length of the ArrayList to be used by this object.
+     */
     public HashedBSTs(int size)
     {
         table = new ArrayList<BinarySearchTree<Node>>(size);
@@ -26,6 +33,9 @@ public class HashedBSTs<E extends Comparable<? super E>>
         }
     }
 
+    /**
+     * Prints the root Node of each Binary Search Tree in the ArrayList and how many nodes are contained in each BST.
+     */
     public void  printHashCountResults()
     {
         for (int i = 0; i < table.size(); i++)
@@ -41,11 +51,20 @@ public class HashedBSTs<E extends Comparable<? super E>>
         }
     }
 
+    /**
+     * Retrieves a Binary Seach Tree from a specified index in the ArrayList.
+     * @param index The index of the Binary Search Tree in the ArrayList.
+     * @return Returns a BinarySearchTree.
+     */
     public BinarySearchTree retrieveHashedBSTat(int index)
     {
         return table.get(index);
     }
 
+    /**
+     * Reads input data from a specified file.
+     * @param filename The filename from which to read the input data.
+     */
     public void fileReader(String filename)
     {
         File file = new File(filename);
@@ -82,6 +101,11 @@ public class HashedBSTs<E extends Comparable<? super E>>
         }
     }
 
+    /**
+     * Finds all nodes in a retrieved Binary Search Tree that start with the String contained in sample Node.
+     * @param retrieved The Binary Search Tree to search for Nodes in.
+     * @param sample The sample node to compare with nodes in the Binary Search Tree.
+     */
     public void findAll(BinarySearchTree<Node> retrieved, Node sample)
     {
         System.out.println("Printing the results of nodes that START WITH: " + sample.getWord());
